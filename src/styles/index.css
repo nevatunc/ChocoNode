@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-cocoa-radial text-cocoa-800 dark:bg-cocoa-radial-dark dark:text-cream font-body transition-colors;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* ---- Sıcak çikolata dükkânı dekoratif yardımcı sınıflar ---- */
+
+/* Çikolataya batırılmış, yumuşak-kabarık "bonbon" kart */
+.choc-card {
+  @apply relative rounded-[28px] border-2 border-cocoa-200/60 dark:border-cocoa-600/60;
+  background: linear-gradient(160deg, var(--choc-card-top, #fff6e9) 0%, var(--choc-card-bottom, #f3dcb8) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 24px -8px rgba(43, 24, 16, 0.28);
+}
+.dark .choc-card {
+  background: linear-gradient(160deg, #4a2d1c 0%, #311c10 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 10px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Erimiş çikolata damlası düğme hissi */
+.choc-button {
+  @apply relative inline-flex items-center justify-center gap-1.5 rounded-full font-display font-semibold
+    transition-transform active:translate-y-[3px] select-none;
+  box-shadow: 0 5px 0 0 rgba(90, 54, 30, 0.4), 0 8px 18px -6px rgba(43, 24, 16, 0.4);
+}
+.choc-button:active {
+  box-shadow: 0 1px 0 0 rgba(90, 54, 30, 0.4), 0 3px 8px -4px rgba(43, 24, 16, 0.4);
+}
+.choc-button-primary {
+  @apply choc-button text-cocoa-900;
+  background: linear-gradient(180deg, #f6c15f 0%, #d98a3d 55%, #c1762e 100%);
+}
+.choc-button-secondary {
+  @apply choc-button text-cocoa-800 dark:text-cream;
+  background: linear-gradient(180deg, #fff6e9 0%, #ead3ab 100%);
+}
+.dark .choc-button-secondary {
+  background: linear-gradient(180deg, #5c371f 0%, #422715 100%);
+}
+.choc-button-mint {
+  @apply choc-button text-cocoa-900;
+  background: linear-gradient(180deg, #c7ecd5 0%, #8fd0a9 60%, #6fb988 100%);
+}
+
+/* Çikolata damlası dekoru (kartların üstünde) */
+.drip-top {
+  position: relative;
+}
+.drip-top::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50% 50% 50% 0;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+/* Yazı başlıkları için hafif erime gölgesi */
+.melt-text {
+  font-family: "Baloo 2", system-ui, sans-serif;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.35), 0 4px 10px rgba(90, 54, 30, 0.25);
+}
+
+/* Parlayan altın karamel şerit */
+.shimmer-gold {
+  background: linear-gradient(90deg, #d98a3d 0%, #f6d98a 25%, #d98a3d 50%, #f6d98a 75%, #d98a3d 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
+
+/* Noktalı "çikolata tozu" arkaplan dokusu */
+.cocoa-dust {
+  background-image: radial-gradient(rgba(90, 54, 30, 0.12) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+.dark .cocoa-dust {
+  background-image: radial-gradient(rgba(243, 221, 192, 0.08) 1.5px, transparent 1.5px);
+}
+
+::selection {
+  background: #f0a8ae;
+  color: #2b1810;
+}
